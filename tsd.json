@@ -6,7 +6,7 @@
   "bundle": "src/typings/tsd.d.ts",
   "installed": {
     "node/node.d.ts": {
-      "commit": "40c60850ad6c8175a62d5ab48c4e016ea5b3dffe"
+      "commit": "627b6c158b73494c803f36fc2fe00ad75faa8fde"
     },
     "chai/chai.d.ts": {
       "commit": "40c60850ad6c8175a62d5ab48c4e016ea5b3dffe"
@@ -15,13 +15,13 @@
       "commit": "40c60850ad6c8175a62d5ab48c4e016ea5b3dffe"
     },
     "glob/glob.d.ts": {
-      "commit": "40c60850ad6c8175a62d5ab48c4e016ea5b3dffe"
+      "commit": "627b6c158b73494c803f36fc2fe00ad75faa8fde"
     },
     "assertion-error/assertion-error.d.ts": {
       "commit": "40c60850ad6c8175a62d5ab48c4e016ea5b3dffe"
     },
     "minimatch/minimatch.d.ts": {
-      "commit": "40c60850ad6c8175a62d5ab48c4e016ea5b3dffe"
+      "commit": "627b6c158b73494c803f36fc2fe00ad75faa8fde"
     },
     "es6-promise/es6-promise.d.ts": {
       "commit": "40c60850ad6c8175a62d5ab48c4e016ea5b3dffe"
@@ -34,6 +34,9 @@
     },
     "sinon-chai/sinon-chai.d.ts": {
       "commit": "40c60850ad6c8175a62d5ab48c4e016ea5b3dffe"
+    },
+    "fs-extra/fs-extra.d.ts": {
+      "commit": "627b6c158b73494c803f36fc2fe00ad75faa8fde"
     }
   }
 }

@@ -1,13 +1,16 @@
 {
   "author": {
     "name": "\"coolchem\" Varun Reddy Nalagatla",
-    "email":"varun8686@gmail.com"
+    "email": "varun8686@gmail.com"
   },
   "files": [
     "dist"
   ],
   "main": "dist/main.js",
-  "dependencies": {},
+  "dependencies": {
+    "fs-extra": "^0.26.4",
+    "glob": "^6.0.4"
+  },
   "description": "karma plugin for stealjs and npm",
   "devDependencies": {
     "chai": "^3.4.0",

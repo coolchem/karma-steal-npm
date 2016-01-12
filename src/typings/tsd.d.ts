@@ -8,3 +8,4 @@
 /// <reference path="node/node.d.ts" />
 /// <reference path="sinon-chai/sinon-chai.d.ts" />
 /// <reference path="sinon/sinon.d.ts" />
+/// <reference path="fs-extra/fs-extra.d.ts" />
