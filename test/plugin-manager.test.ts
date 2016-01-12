@@ -21,7 +21,7 @@ describe('plugin-manager Integration Test cases', () => {
     var basePath:string = tempProjectDir;
     var client:any = {};
 
-    before((done)=>{
+    before(()=>{
         fs.mkdirSync(tempProjectDir);
         fs.writeFileSync(tempProjectDir+"/package.json",JSON.stringify({version:"0.0.1"}, null, '  ') + '\n');
 
@@ -34,6 +34,7 @@ describe('plugin-manager Integration Test cases', () => {
         fs.writeFileSync(tempProjectDir+"/test/test1.js"," ");
         fs.writeFileSync(tempProjectDir+"/test/test2.js"," ");
         fs.writeFileSync(tempProjectDir+"/test/unit/test3.js"," ");
+        fs.writeFileSync(tempProjectDir+"/test/unit/test4.ts"," ");
 
     });
 
@@ -49,11 +50,12 @@ describe('plugin-manager Integration Test cases', () => {
 
             files = [];
             client = {};
+            steal = {testFiles:["test/**/*.js"]};
 
             pm.initializePlugin(files,basePath,steal,client)
         });
-        it("should add steal.js to top of the files array",(done)=>{
-            expect(files[0].pattern).to.equal(tempProjectDir+"node_modules/steal/steal.js");
+        it("should add steal.js to top of the files array",()=>{
+            expect(files[0].pattern).to.equal(tempProjectDir+"/node_modules/steal/steal.js");
             expect(files[0].included).to.equal(true);
 
         });
@@ -64,36 +66,38 @@ describe('plugin-manager Integration Test cases', () => {
             expect(files[1].included).to.equal(true);
         });
 
-        it("should add package.json to the files array",(done)=>{
+        it("should add package.json to the files array",()=>{
 
             expect(files[2].pattern).to.equal(tempProjectDir+"/package.json");
             expect(files[2].included).to.equal(false);
+            expect(files[2].watched).to.equal(true);
+            expect(files[2].served).to.equal(true);
         });
 
-        it("should add all js files in node_modules to the files array",(done)=>{
+        it("should add all js files in node_modules to the files array",()=>{
 
-            expect(files[3].pattern).to.equal(tempProjectDir+"node_modules/**/*.js");
+            expect(files[3].pattern).to.equal(tempProjectDir+"/node_modules/**/*.js");
             expect(files[3].included).to.equal(false);
             expect(files[3].watched).to.equal(true);
             expect(files[3].served).to.equal(true);
 
         });
 
-        it("should add all package.json files in node_modules to the files array",(done)=>{
+        it("should add all package.json files in node_modules to the files array",()=>{
 
-            expect(files[4].pattern).to.equal(tempProjectDir+"node_modules/**/package.json");
+            expect(files[4].pattern).to.equal(tempProjectDir+"/node_modules/**/package.json");
             expect(files[4].included).to.equal(false);
             expect(files[4].watched).to.equal(true);
             expect(files[4].served).to.equal(true);
 
         });
 
-        it("should add files in stealjs.testFiles to the files array",(done)=>{
+        it("should add files in stealjs.testFiles to the files array",()=>{
 
             expect(client.steal.testFiles.length).to.equal(3);
-            expect(client.steal.testFiles).to.equal([tempProjectDir+"/test/test1.js",
-                tempProjectDir+"/test/test2.js",
-                tempProjectDir+"/test/unit/test3.js"]);
+            expect(client.steal.testFiles).to.eql(["test/test1.js",
+                "test/test2.js",
+                "test/unit/test3.js"]);
         });
 
     });

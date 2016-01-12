@@ -14,7 +14,7 @@
 
 
             // Load everything specified in stealjs files
-            var promiseChain:Promise = Promise.resolve();
+            var promiseChain:Promise<any> = Promise.resolve();
             for (var i = 0; i < karma.config.steal.testFiles.length; i++) {
 
                 promiseChain = promiseChain.then(()=>{
