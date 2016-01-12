@@ -1,0 +1,51 @@
+{
+  "author": {
+    "name": ""
+  },
+  "dependencies": {},
+  "description": "",
+  "devDependencies": {
+    "chai": "^3.4.0",
+    "coveralls": "^2.11.4",
+    "cross-spawn-async": "^2.1.6",
+    "del": "^2.0.2",
+    "istanbul": "^0.4.1",
+    "mocha": "^2.3.3",
+    "mock-stdin": "^0.3.0",
+    "sinon": "^1.17.2",
+    "sinon-as-promised": "^4.0.0",
+    "sinon-chai": "^2.8.0",
+    "tsd": "^0.6.5",
+    "typescript": "^1.7"
+  },
+  "engines": {
+    "node": ">=5.0.0"
+  },
+  "homepage": "",
+  "keywords": [],
+  "licenses": [],
+  "name": "karma-stealjs-npm",
+  "optionalDependencies": {},
+  "readme": "",
+  "readmeFilename": "",
+  "repository": {
+    "url": "",
+    "type": ""
+  },
+  "scripts": {
+    "build": "node scripts/build.js",
+    "build-release": "npm run build release",
+    "clean": "node scripts/clean.js",
+    "coverage": "node scripts/coverage.js",
+    "deploy": "node scripts/deploy.js",
+    "install-deps": "npm install && node scripts/install-other-dependencies.js",
+    "release-major": "node scripts/release.js major",
+    "release-minor": "node scripts/release.js minor",
+    "release-patch": "node scripts/release.js patch",
+    "test": "node scripts/test.js"
+  },
+  "version": "0.0.1",
+  "bugs": {
+    "url": ""
+  }
+}
