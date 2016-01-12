@@ -1,22 +1,14 @@
 
 
-import {actionControl,Action,Event} from "./systems/index"
+import {initializePlugin} from "./plugin-manager"
 
+var initStealjs:any = initializePlugin;
 
-//subscribing to an event
+initStealjs.$inject = ['config.files', 'config.basePath', 'config.steal', 'config.client'];
 
-actionControl.subscribe(Event.HI_HELLO,(result:string)=>{
-
-   console.log("Event Received:\n"+result);
-});
-
-//performing an action
-actionControl.perform(Action.SAY_HI_AND_HELLO).then((result:string)=>{
-    console.log("Action Performed:\n"+result);
-    console.log(result);
-
-    process.exit(0);
-});
+module.exports = {
+    'framework:jspm': ['factory', initStealjs]
+};
 
 
 

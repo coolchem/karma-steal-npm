@@ -40,7 +40,7 @@
       "url": "https://github.com/coolchem/raappid/blob/master/LICENSE"
     }
   ],
-  "name": "karma-stealjs-npm",
+  "name": "karma-steal-npm",
   "optionalDependencies": {},
   "readme": "",
   "readmeFilename": "",
