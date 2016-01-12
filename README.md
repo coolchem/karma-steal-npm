@@ -1,4 +1,4 @@
-# Project-Name
+# karma-stealjs-npm
 
 ## big Headline
 
