@@ -1,5 +1,5 @@
 {
-  "name": "karma-stealjs-npm",
+  "name": "karma-steal-npm",
   "version": "0.0.1",
   "dependencies": {
     "abbrev": {
@@ -471,9 +471,9 @@
       }
     },
     "graceful-fs": {
-      "version": "2.0.3",
-      "from": "graceful-fs@>=2.0.0 <2.1.0",
-      "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-2.0.3.tgz"
+      "version": "4.1.2",
+      "from": "graceful-fs@latest",
+      "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.1.2.tgz"
     },
     "graceful-readlink": {
       "version": "1.0.1",
@@ -873,7 +873,14 @@
         "glob": {
           "version": "3.2.3",
           "from": "glob@3.2.3",
-          "resolved": "https://registry.npmjs.org/glob/-/glob-3.2.3.tgz"
+          "resolved": "https://registry.npmjs.org/glob/-/glob-3.2.3.tgz",
+          "dependencies": {
+            "graceful-fs": {
+              "version": "2.0.3",
+              "from": "graceful-fs@>=2.0.0 <2.1.0",
+              "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-2.0.3.tgz"
+            }
+          }
         },
         "minimatch": {
           "version": "0.2.14",

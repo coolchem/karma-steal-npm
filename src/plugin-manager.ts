@@ -51,8 +51,27 @@ export function initializePlugin(files:Array<{pattern:string,
 
     files.unshift(createPattern(__dirname + '/adapter.js'));
     files.unshift(createPattern(packagePath + '/node_modules/steal/steal.js'));
-    files.unshift(createAsyncPattern(packagePath + '/node_modules/**/*/package.json'));
-    files.unshift(createAsyncPattern(packagePath + '/node_modules/**/*.js'));
+
+    var pkg = require(packagePath + '/package.json');
+
+    if(pkg.dependencies)
+    {
+        for ( var module in pkg.dependencies)
+        {
+            files.unshift(createAsyncPattern(packagePath + '/node_modules/' + module +'/**/*.js'));
+            files.unshift(createAsyncPattern(packagePath + '/node_modules/' + module +'/**/package.json'));
+        }
+    }
+
+    if(pkg.devDependencies)
+    {
+        for ( var module in pkg.devDependencies)
+        {
+            files.unshift(createAsyncPattern(packagePath + '/node_modules/' + module +'/**/*.js'));
+            files.unshift(createAsyncPattern(packagePath + '/node_modules/' + module +'/**/package.json'));
+        }
+    }
+
     files.unshift(createAsyncPattern(packagePath + '/package.json'));
 
 
