@@ -7,7 +7,7 @@ var initStealjs:any = initializePlugin;
 initStealjs.$inject = ['config.files', 'config.basePath', 'config.steal', 'config.client'];
 
 module.exports = {
-    'framework:jspm': ['factory', initStealjs]
+    'framework:steal-npm': ['factory', initStealjs]
 };
 
 

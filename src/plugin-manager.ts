@@ -3,7 +3,7 @@
 
 import reject = Promise.reject;
 import resolve = Promise.resolve;
-import paths = require("path");
+import path = require("path");
 import fs = require("fs-extra")
 
 import glob = require("glob");
@@ -29,19 +29,36 @@ export function initializePlugin(files:Array<{pattern:string,
     served:boolean,
     watched:boolean}>,basePath:string, steal:any, client:any):void
 {
-    var packagePath:string = paths.normalize(basePath);
 
-    files.unshift(createAsyncPattern(packagePath + '/node_modules/**/package.json'));
-    files.unshift(createAsyncPattern(packagePath + '/node_modules/**/*.js'));
-    files.unshift(createAsyncPattern(packagePath + '/package.json'));
-    files.unshift(createPattern(__dirname + '/adapter.js'));
-    files.unshift(createPattern(packagePath + '/node_modules/steal/steal.js'));
+    if(!steal)
+        steal = {};
 
     if(!client.steal)
         client.steal = {};
 
-    client.steal.testFiles = flatten(steal.testFiles.map(function(file){
-        files.push(createAsyncPattern(basePath + "/" + (file.pattern || file)));
+    if(!steal.testFiles)
+        steal.testFiles = [];
+
+    if(!steal.files)
+        steal.files = [];
+
+    var packagePath:string = path.normalize(basePath);
+
+    steal.files.forEach((path)=>{
+
+        files.unshift(createAsyncPattern(packagePath + "/" + path));
+    });
+
+    files.unshift(createPattern(__dirname + '/adapter.js'));
+    files.unshift(createPattern(packagePath + '/node_modules/steal/steal.js'));
+    files.unshift(createAsyncPattern(packagePath + '/node_modules/**/*/package.json'));
+    files.unshift(createAsyncPattern(packagePath + '/node_modules/**/*.js'));
+    files.unshift(createAsyncPattern(packagePath + '/package.json'));
+
+
+
+    client.steal.files = flatten(steal.testFiles.map(function(file){
+        files.push(createAsyncPattern(packagePath + "/" + (file.pattern || file)));
         return expandGlob(file, basePath);
     }));
 

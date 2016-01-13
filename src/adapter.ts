@@ -5,29 +5,31 @@
         throw new Error("steal not found");
     }
 
-    System.main = 'package.json!npm';
+
 
     // Prevent immediately starting tests.
     karma.loaded = function() {
 
         steal.done().then(()=>{
 
-
             // Load everything specified in stealjs files
-            var promiseChain:Promise<any> = Promise.resolve();
-            for (var i = 0; i < karma.config.steal.testFiles.length; i++) {
 
-                promiseChain = promiseChain.then(()=>{
-                    return System['import'](karma.config.steal.testFiles[i]);
-                });
+            var promises:Array<Promise<any>> = [];
+
+            for (var i = 0; i < karma.config.steal.files.length; i++) {
+
+                promises.push(System['import'](stripExtension(karma.config.steal.files[i])));
             }
 
-            promiseChain.then(function () {
+            Promise.all(promises).then(()=>{
                 karma.start();
-            }, function (e) {
-                throw e;
+            },(error)=>{
+                throw error;
             });
 
+            function stripExtension(fileName) {
+                return fileName.replace(/\.js$/, "");
+            }
         });
 
     };
