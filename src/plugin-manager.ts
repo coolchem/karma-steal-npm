@@ -49,8 +49,6 @@ export function initializePlugin(files:Array<{pattern:string,
         files.unshift(createAsyncPattern(packagePath + "/" + path));
     });
 
-    files.unshift(createPattern(__dirname + '/adapter.js'));
-    files.unshift(createPattern(packagePath + '/node_modules/steal/steal.js'));
 
     var pkg = require(packagePath + '/package.json');
 
@@ -73,7 +71,8 @@ export function initializePlugin(files:Array<{pattern:string,
     }
 
     files.unshift(createAsyncPattern(packagePath + '/package.json'));
-
+    files.unshift(createPattern(__dirname + '/adapter.js'));
+    files.unshift(createPattern(packagePath + '/node_modules/steal/steal.js'));
 
 
     client.steal.files = flatten(steal.testFiles.map(function(file){

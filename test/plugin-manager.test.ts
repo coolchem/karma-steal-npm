@@ -57,41 +57,23 @@ describe('plugin-manager Integration Test cases', () => {
             pm.initializePlugin(files,basePath,steal,client)
         });
         it("should add steal.js to top of the files array",()=>{
-            expect(files[3].pattern).to.equal(tempProjectDir+"/node_modules/steal/steal.js");
-            expect(files[3].included).to.equal(true);
+            expect(files[0].pattern).to.equal(tempProjectDir+"/node_modules/steal/steal.js");
+            expect(files[0].included).to.equal(true);
 
         });
 
         it("should add adapter to top of the files array",()=>{
 
-            expect(files[4].pattern).to.equal(path.resolve('./src/adapter.js'));
-            expect(files[4].included).to.equal(true);
+            expect(files[1].pattern).to.equal(path.resolve('./src/adapter.js'));
+            expect(files[1].included).to.equal(true);
         });
 
         it("should add package.json to the files array",()=>{
 
-            expect(files[0].pattern).to.equal(tempProjectDir+"/package.json");
-            expect(files[0].included).to.equal(false);
-            expect(files[0].watched).to.equal(true);
-            expect(files[0].served).to.equal(true);
-        });
-
-        it("should add all js files in node_modules to the files array",()=>{
-
-            expect(files[1].pattern).to.equal(tempProjectDir+"/node_modules/**/*.js");
-            expect(files[1].included).to.equal(false);
-            expect(files[1].watched).to.equal(true);
-            expect(files[1].served).to.equal(true);
-
-        });
-
-        it("should add all package.json files in node_modules to the files array",()=>{
-
-            expect(files[2].pattern).to.equal(tempProjectDir+"/node_modules/**/*/package.json");
+            expect(files[2].pattern).to.equal(tempProjectDir+"/package.json");
             expect(files[2].included).to.equal(false);
             expect(files[2].watched).to.equal(true);
             expect(files[2].served).to.equal(true);
-
         });
 
         it("should add files in stealjs.testFiles to the files array",()=>{
