@@ -10,6 +10,7 @@
     // Prevent immediately starting tests.
     karma.loaded = function() {
 
+        steal.System.main = "";
         steal.done().then(()=>{
 
             // Load everything specified in stealjs files
