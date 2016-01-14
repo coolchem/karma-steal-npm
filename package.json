@@ -37,7 +37,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/coolchem/raappid/blob/master/LICENSE"
+      "url": "https://github.com/coolchem/karma-steal-npm/blob/master/LICENSE"
     }
   ],
   "name": "karma-steal-npm",
@@ -46,7 +46,7 @@
   "readmeFilename": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/coolchem/karma-stealjs-npm.git"
+    "url": "https://github.com/coolchem/karma-steal-npm.git"
   },
   "scripts": {
     "build": "node scripts/build.js",
@@ -62,6 +62,6 @@
   },
   "version": "0.1.0",
   "bugs": {
-    "url": "https://github.com/coolchem/karma-stealjs-npm/issues"
+    "url": "https://github.com/coolchem/karma-steal-npm/issues"
   }
 }
