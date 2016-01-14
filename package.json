@@ -60,7 +60,7 @@
     "release-patch": "node scripts/release.js patch",
     "test": "node scripts/test.js"
   },
-  "version": "0.0.1",
+  "version": "0.1.0",
   "bugs": {
     "url": "https://github.com/coolchem/karma-stealjs-npm/issues"
   }
