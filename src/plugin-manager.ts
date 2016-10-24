@@ -52,23 +52,9 @@ export function initializePlugin(files:Array<{pattern:string,
 
     var pkg = require(packagePath + '/package.json');
 
-    if(pkg.dependencies)
-    {
-        for ( var module in pkg.dependencies)
-        {
-            files.unshift(createAsyncPattern(packagePath + '/node_modules/' + module +'/**/*.js'));
-            files.unshift(createAsyncPattern(packagePath + '/node_modules/' + module +'/**/package.json'));
-        }
-    }
+    files.unshift(createAsyncPattern(packagePath + '/node_modules/**/*.js'));
+    files.unshift(createAsyncPattern(packagePath + '/node_modules/**/package.json'));
 
-    if(pkg.devDependencies)
-    {
-        for ( var module in pkg.devDependencies)
-        {
-            files.unshift(createAsyncPattern(packagePath + '/node_modules/' + module +'/**/*.js'));
-            files.unshift(createAsyncPattern(packagePath + '/node_modules/' + module +'/**/package.json'));
-        }
-    }
 
     files.unshift(createAsyncPattern(packagePath + '/package.json'));
     files.unshift(createPattern(__dirname + '/adapter.js'));

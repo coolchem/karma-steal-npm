@@ -4,7 +4,6 @@ import chai = require('chai');
 import pm = require("../src/plugin-manager");
 import path = require("path");
 import fs = require("fs-extra");
-import {exec} from "child_process";
 
 
 describe('plugin-manager Integration Test cases', () => {
